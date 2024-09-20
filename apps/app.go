@@ -158,7 +158,7 @@ func labelsToTags(labels map[string]string, tagPlaceholderMapping map[string]str
 func createTagPlaceholderMapping(portDefinitions []indexedPortDefinition, ports []int) map[string]string {
 	mapping := map[string]string{}
 	for _, d := range portDefinitions {
-		if d.Name != "" {
+		if d.Name != "" && len(ports) > 0 {
 			placeholder := fmt.Sprintf("{port:%s}", d.Name)
 			mapping[placeholder] = fmt.Sprint(ports[d.Index])
 		}
